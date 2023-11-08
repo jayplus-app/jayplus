@@ -7,6 +7,9 @@ up:
 up-detached:
 	docker-compose up -d
 
+down:
+	docker-compose down && docker-compose rm -f
+
 up-backend:
 	docker-compose up backend
 
