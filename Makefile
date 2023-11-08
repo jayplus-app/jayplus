@@ -6,3 +6,9 @@ up:
 
 up-detached:
 	docker-compose up -d
+
+up-backend:
+	docker-compose up backend
+
+up-frontend:
+	docker-compose up frontend

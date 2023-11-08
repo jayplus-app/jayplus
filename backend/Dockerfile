@@ -1,6 +1,6 @@
 FROM golang:1.21 AS builder
 
-WORKDIR /app
+WORKDIR /backend
 COPY go.* .
 RUN go mod download
 COPY . .
