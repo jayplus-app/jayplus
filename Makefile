@@ -15,3 +15,6 @@ up-backend:
 
 up-frontend:
 	docker-compose up frontend
+
+up-website:
+	docker-compose up website
