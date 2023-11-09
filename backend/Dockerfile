@@ -5,10 +5,10 @@ COPY go.* .
 RUN go mod download
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /backend cmd/api/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /backend/cmd/api/main cmd/api/main.go
 
 FROM alpine:latest
 
-COPY --from=builder /backend /backend
+COPY --from=builder /backend/cmd/api/main /backend/main
 
-CMD ["/backend"]
+CMD ["/backend/main"]
