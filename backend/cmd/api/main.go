@@ -10,7 +10,8 @@ import (
 func main() {
     router := mux.NewRouter()
     router.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-        w.Write([]byte("Hello, world!"))
+        w.Header().Set("Content-Type", "application/json")
+        w.Write([]byte(`{"message": "hello world"}`))
     }).Methods("GET")
 
     fmt.Println("Server is running on port 8080")

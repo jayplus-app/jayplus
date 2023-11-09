@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <nav>This is customer app</nav>
+        <nav>This is customer app of websire</nav>
         {children}
       </body>
     </html>

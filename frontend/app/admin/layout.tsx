@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <nav>This is Admin app</nav>
+        <nav>This is Admin app of frontend</nav>
         {children}
       </body>
     </html>
