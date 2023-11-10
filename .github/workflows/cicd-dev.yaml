@@ -18,22 +18,21 @@ jobs:
         with:
           name: jayplus-dev-artifact
           path: ./
-
-deploy:
-  runs-on: ubuntu-latest
-  needs: build-and-test
-  steps:
-    - name: Download artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: jayplus-dev-artifact
-        path: /home/runner/work/jayplus/jayplus-dev-artifact
-    - name: Setup SSH and Deploy
-      run: |
-        sudo apt-get install -y openssh-client
-        mkdir -p ~/.ssh
-        ssh-keyscan 178.128.228.63 >> ~/.ssh/known_hosts
-        echo "${{ secrets.GH_ACTIONS_DEV_SSH_KEY }}" > gh-actions-dev-ssh-key
-        chmod 600 gh-actions-dev-ssh-key
-        scp -r -i gh-actions-dev-ssh-key /home/runner/work/jayplus/jayplus-dev-artifact/* gh-actions@178.128.228.63:~/
-        ssh -i gh-actions-dev-ssh-key gh-actions@178.128.228.63 "cd ~/ && make up-detached"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: jayplus-dev-artifact
+          path: /home/runner/work/jayplus/jayplus-dev-artifact
+      - name: Setup SSH and Deploy
+        run: |
+          sudo apt-get install -y openssh-client
+          mkdir -p ~/.ssh
+          ssh-keyscan 178.128.228.63 >> ~/.ssh/known_hosts
+          echo "${{ secrets.GH_ACTIONS_DEV_SSH_KEY }}" > gh-actions-dev-ssh-key
+          chmod 600 gh-actions-dev-ssh-key
+          scp -r -i gh-actions-dev-ssh-key /home/runner/work/jayplus/jayplus-dev-artifact/* gh-actions@178.128.228.63:~/
+          ssh -i gh-actions-dev-ssh-key gh-actions@178.128.228.63 "cd ~/ && make up-detached"
