@@ -1,14 +1,16 @@
 FROM golang:1.21 AS builder
 
-WORKDIR /backend
-COPY go.* .
+WORKDIR /app
+COPY go.* ./
 RUN go mod download
-COPY . .
+COPY . ./
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /backend/cmd/api/main cmd/api/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /backend cmd/app/main.go
 
 FROM alpine:latest
 
-COPY --from=builder /backend/cmd/api/main /backend/main
+COPY --from=builder /backend /backend
 
-CMD ["/backend/main"]
+RUN apk --no-cache add tzdata
+
+CMD ["/backend"]
