@@ -12,6 +12,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Environment Variables
+        run: |
+          echo "SERVER_PORT=${{ secrets.SERVER_PORT }}" >> $GITHUB_ENV
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> $GITHUB_ENV
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> $GITHUB_ENV
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> $GITHUB_ENV
+          echo "DB_USER=${{ secrets.DB_USER }}" >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+          echo "JWT_ISSUER=${{ secrets.JWT_ISSUER }}" >> $GITHUB_ENV
+          echo "JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}" >> $GITHUB_ENV
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
+          echo "JWT_COOKIE_DOMAIN=${{ secrets.JWT_COOKIE_DOMAIN }}" >> $GITHUB_ENV
+          echo "JWT_COOKIE_NAME=${{ secrets.JWT_COOKIE_NAME }}" >> $GITHUB_ENV
+          echo "JWT_COOKIE_PATH=${{ secrets.JWT_COOKIE_PATH }}" >> $GITHUB_ENV
+          echo "ACCESS_TOKEN_EXPIRY=${{ secrets.ACCESS_TOKEN_EXPIRY }}" >> $GITHUB_ENV
+          echo "REFRESH_TOKEN_EXPIRY=${{ secrets.REFRESH_TOKEN_EXPIRY }}" >> $GITHUB_ENV
+
       - name: Build and run Docker Compose
         run: make up-detached
 
