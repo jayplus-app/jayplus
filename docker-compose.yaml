@@ -7,20 +7,20 @@ services:
     ports:
       - "${SERVER_PORT}:8080"
     environment:
-      - SERVER_PORT=${SERVER_PORT}
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - JWT_ISSUER=${JWT_ISSUER}
-      - JWT_AUDIENCE=${JWT_AUDIENCE}
-      - JWT_SECRET=${JWT_SECRET}
-      - JWT_COOKIE_DOMAIN=${JWT_COOKIE_DOMAIN}
-      - JWT_COOKIE_PATH=${JWT_COOKIE_PATH}
-      - JWT_COOKIE_NAME=${JWT_COOKIE_NAME}
-      - ACCESS_TOKEN_EXPIRY=${ACCESS_TOKEN_EXPIRY}
-      - REFRESH_TOKEN_EXPIRY=${REFRESH_TOKEN_EXPIRY}
+      - SERVER_PORT=${SERVER_PORT:-8080}
+      - DB_HOST=${DB_HOST:-localhost}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_NAME=${DB_NAME:-test}
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - JWT_ISSUER=${JWT_ISSUER:-jwt-issuer}
+      - JWT_AUDIENCE=${JWT_AUDIENCE:-jwt-audience}
+      - JWT_SECRET=${JWT_SECRET:-jwt-secret}
+      - JWT_COOKIE_DOMAIN=${JWT_COOKIE_DOMAIN:-backend}
+      - JWT_COOKIE_PATH=${JWT_COOKIE_PATH:-/}
+      - JWT_COOKIE_NAME=${JWT_COOKIE_NAME:-refresh_token}
+      - ACCESS_TOKEN_EXPIRY=${ACCESS_TOKEN_EXPIRY:-900}
+      - REFRESH_TOKEN_EXPIRY=${REFRESH_TOKEN_EXPIRY:-604800}
 
   frontend:
     build:
