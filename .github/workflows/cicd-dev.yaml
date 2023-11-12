@@ -78,4 +78,20 @@ jobs:
       - name: Copy Artifacts and Deploy
         run: |
           scp -i gh-actions-dev-ssh-key -r /home/runner/work/jayplus/jayplus-dev-artifact/* gh-actions@178.128.228.63:~/
-          ssh -i gh-actions-dev-ssh-key gh-actions@178.128.228.63 "cd ~/ && make up-detached"
+          ssh -i gh-actions-dev-ssh-key gh-actions@178.128.228.63 "
+          ssh -i gh-actions-dev-ssh-key gh-actions@178.128.228.63 "
+          export SERVER_PORT=${{ secrets.SERVER_PORT }}
+          export DB_HOST=${{ secrets.DB_HOST }}
+          export DB_PORT=${{ secrets.DB_PORT }}
+          export DB_NAME=${{ secrets.DB_NAME }}
+          export DB_USER=${{ secrets.DB_USER }}
+          export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+          export JWT_ISSUER=${{ secrets.JWT_ISSUER }}
+          export JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}
+          export JWT_SECRET=${{ secrets.JWT_SECRET }}
+          export JWT_COOKIE_DOMAIN=${{ secrets.JWT_COOKIE_DOMAIN }}
+          export JWT_COOKIE_NAME=${{ secrets.JWT_COOKIE_NAME }}
+          export JWT_COOKIE_PATH=${{ secrets.JWT_COOKIE_PATH }}
+          export ACCESS_TOKEN_EXPIRY=${{ secrets.ACCESS_TOKEN_EXPIRY }}
+          export REFRESH_TOKEN_EXPIRY=${{ secrets.REFRESH_TOKEN_EXPIRY }}
+          cd ~/ && make up-detached"
