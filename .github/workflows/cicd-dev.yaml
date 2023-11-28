@@ -74,4 +74,4 @@ jobs:
           export JWT_COOKIE_PATH=${{ secrets.JWT_COOKIE_PATH }}
           export ACCESS_TOKEN_EXPIRY=${{ secrets.ACCESS_TOKEN_EXPIRY }}
           export REFRESH_TOKEN_EXPIRY=${{ secrets.REFRESH_TOKEN_EXPIRY }}
-          cd ~/ && make up-detached"
+          cd ~/ && make up-detached" 
