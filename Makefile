@@ -18,3 +18,6 @@ up-frontend:
 
 up-website:
 	docker-compose up website
+
+up-nginx:
+	docker-compose up nginx
