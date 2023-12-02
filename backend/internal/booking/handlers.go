@@ -16,6 +16,20 @@ import (
 )
 
 // VehicleTypes handler returns a list of vehicle types.
+func Test(w http.ResponseWriter, r *http.Request, db db.DBInterface) {
+	// test json response
+	type ResponseBody struct {
+		Message string `json:"message"`
+	}
+
+	responseBody := ResponseBody{
+		Message: "Hello World",
+	}
+
+	utils.WriteJSON(w, http.StatusOK, responseBody)
+}
+
+// VehicleTypes handler returns a list of vehicle types.
 func VehicleTypes(w http.ResponseWriter, r *http.Request, db db.DBInterface) {
 	businessName := r.Header.Get("Business-Name")
 

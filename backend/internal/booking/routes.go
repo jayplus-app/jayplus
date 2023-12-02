@@ -11,6 +11,10 @@ import (
 func BookingRoutes(r *mux.Router, auth auth.AuthInterface, db db.DBInterface) {
 	bookingRouter := r.PathPrefix("/booking").Subrouter()
 
+	bookingRouter.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+		Test(w, r, db)
+	}).Methods("GET")
+
 	bookingRouter.HandleFunc("/vehicle-types", func(w http.ResponseWriter, r *http.Request) {
 		VehicleTypes(w, r, db)
 	}).Methods("GET")

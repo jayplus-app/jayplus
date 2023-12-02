@@ -7,6 +7,7 @@ import (
 
 type BookingInterface interface {
 	// Handlers
+	Test(w http.ResponseWriter, r *http.Request, db db.DBInterface)
 	VehicleTypes(w http.ResponseWriter, r *http.Request, db db.DBInterface)
 	ServiceTypes(w http.ResponseWriter, r *http.Request, db db.DBInterface)
 	TimeSlots(w http.ResponseWriter, r *http.Request, db db.DBInterface)
